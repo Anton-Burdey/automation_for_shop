@@ -3,7 +3,7 @@ import BasePage from './BasePage.js';
 export default class HomePage extends BasePage {
   constructor(page) {
     super(page);
-    this.url = 'http://localhost:5173/';
+    this.url = '/';
   }
 
   get orders() {

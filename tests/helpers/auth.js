@@ -1,3 +1,4 @@
+const { expect } = require('@playwright/test');
 const LoginPage =
   require('../pages/LoginPage').default || require('../pages/LoginPage');
 
@@ -5,6 +6,7 @@ async function login(page, email, password) {
   const loginPage = new LoginPage(page);
   await loginPage.open();
   await loginPage.login(email, password);
+  await expect(page).toHaveURL('http://localhost:5173/');
 }
 
 async function loginAsUser(page) {

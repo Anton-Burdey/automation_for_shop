@@ -3,7 +3,7 @@ import BasePage from './BasePage.js';
 export default class LoginPage extends BasePage {
   constructor(page) {
     super(page);
-    this.url = 'http://localhost:5173/login';
+    this.url = '/login';
   }
 
   get submitBtn() {

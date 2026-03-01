@@ -3,7 +3,7 @@ import BasePage from './BasePage.js';
 export default class RegistrationPage extends BasePage {
   constructor(page) {
     super(page);
-    this.url = 'http://localhost:5173/register';
+    this.url = '/register';
   }
 
   get firstNameField() {
