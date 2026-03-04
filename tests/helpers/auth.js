@@ -1,29 +1,20 @@
 const { expect } = require('@playwright/test');
-const LoginPage =
-  require('../pages/LoginPage').default || require('../pages/LoginPage');
+const { BASE_URL } = require('../constants');
+const LoginPage = require('../pages/LoginPage').default || require('../pages/LoginPage');
 
-async function login(page, email, password) {
+/**
+ * Universal login function
+ * @param {import('@playwright/test').Page} page
+ * @param {Object} credentials
+ * @param {string} credentials.email
+ * @param {string} credentials.password
+ */
+async function login(page, credentials) {
   const loginPage = new LoginPage(page);
   await loginPage.open();
-  await loginPage.login(email, password);
-  await expect(page).toHaveURL('http://localhost:5173/');
+  await loginPage.login(credentials.email, credentials.password);
+  await expect(page).toHaveURL(`${BASE_URL}/`);
 }
 
-async function loginAsUser(page) {
-  await login(
-    page,
-    process.env.TEST_USER_EMAIL || 'user1@test.com',
-    process.env.TEST_USER_PASSWORD || 'user123',
-  );
-}
-
-async function loginAsAdmin(page) {
-  await login(
-    page,
-    process.env.ADMIN_USER_EMAIL || 'admin@test.com',
-    process.env.ADMIN_USER_PASSWORD || 'admin123',
-  );
-}
-
-module.exports = { login, loginAsUser, loginAsAdmin };
+module.exports = { login };
 

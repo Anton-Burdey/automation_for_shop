@@ -41,6 +41,6 @@ export default class RegistrationPage extends BasePage {
     if (username !== undefined) await this.usernameField.fill(username);
     if (phone !== undefined) await this.phoneField.fill(phone);
     if (password !== undefined) await this.passwordField.fill(password);
-    await this.submitBtn.click();
+    await this.clickBtn(this.submitBtn, 'Registration button');
   }
 }

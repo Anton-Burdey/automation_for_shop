@@ -53,14 +53,14 @@ export default class AdminPanelPage extends BasePage {
   }
 
   async goToGoods() {
-    await this.goods.click();
+    await this.clickBtn(this.goods, 'Goods link');
   }
 
   async goToStorage() {
-    await this.storage.click();
+    await this.clickBtn(this.storage, 'Storage link');
   }
 
   async goToAdminOrders() {
-    await this.adminOrders.click();
+    await this.clickBtn(this.adminOrders, 'Admin Orders link');
   }
 }

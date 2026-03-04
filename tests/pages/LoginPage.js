@@ -41,6 +41,6 @@ export default class LoginPage extends BasePage {
   async login(email, password) {
     await this.emailField.fill(email);
     await this.passwordField.fill(password);
-    await this.submitBtn.click();
+    await this.clickBtn(this.submitBtn, 'Login button');
   }
 }

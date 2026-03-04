@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { USERS } = require('./constants');
 const RegistrationPage =
   require('./pages/RegistrationPage').default || require('./pages/RegistrationPage');
 
@@ -9,9 +10,6 @@ function uniqueEmail() {
 function uniqueUsername() {
   return `user_${Date.now()}`;
 }
-
-const EXISTING_EMAIL = 'user1@test.com';
-const EXISTING_USERNAME = 'user1';
 
 test.describe('Registration page', () => {
   test.beforeEach(async ({ page }) => {
@@ -56,7 +54,7 @@ test.describe('Registration page', () => {
     await reg.register({
       firstName: 'Test',
       lastName: 'User',
-      email: EXISTING_EMAIL,
+      email: USERS.existing.email,
       username: uniqueUsername(),
       phone: '+79991234567',
       password: 'Password123!',
@@ -73,7 +71,7 @@ test.describe('Registration page', () => {
       firstName: 'Test',
       lastName: 'User',
       email: uniqueEmail(),
-      username: EXISTING_USERNAME,
+      username: USERS.existing.username,
       phone: '+79991234567',
       password: 'Password123!',
     });

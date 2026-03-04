@@ -43,21 +43,21 @@ export default class HomePage extends BasePage {
   }
 
   async goToProfileSettings() {
-    await this.userMenu.click();
-    await this.profileSettings.click();
+    await this.clickBtn(this.userMenu, 'User menu');
+    await this.clickBtn(this.profileSettings, 'Profile settings link');
   }
 
   async goToOrdersHistory() {
-    await this.userMenu.click();
-    await this.ordersHistory.click();
+    await this.clickBtn(this.userMenu, 'User menu');
+    await this.clickBtn(this.ordersHistory, 'Orders history link');
   }
 
   async logoutUser() {
-    await this.userMenu.click();
-    await this.logout.click();
+    await this.clickBtn(this.userMenu, 'User menu');
+    await this.clickBtn(this.logout, 'Logout button');
   }
 
   async goToAdminPanel() {
-    await this.adminPanel.click();
+    await this.clickBtn(this.adminPanel, 'Admin panel link');
   }
 }
