@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { USERS } = require('./constants');
+const { USERS } = require('./helpers/constants');
 const {
     apiLogin,
     apiRegister,
@@ -115,6 +115,8 @@ test.describe.serial('API Tests', () => {
     });
 
     test('TC#7: Ошибка доступа: Создание товара без авторизации', async ({ request }) => {
+        test.fail();
+
         const { status } = await apiCreateProduct(request, {
             name: `Unauthorized Product ${Date.now()}`,
             description: 'Test',
@@ -123,7 +125,7 @@ test.describe.serial('API Tests', () => {
             urlImage: 'http://example.com/img.jpg',
         });
 
-        expect([401, 403, 201]).toContain(status);
+        expect([401, 403]).toContain(status);
     });
 
     test('TC#8: Запрос данных одного товара по ID', async ({ request }) => {
